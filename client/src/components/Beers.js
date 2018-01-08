@@ -1,7 +1,14 @@
 import React from 'react';
 import { Header, Container, Card, Image } from 'semantic-ui-react';
+import axios from 'axios';
 
 class Beers extends React.Component {
+    state = { beers: [], breweries: []  }
+
+    componentDidMount() {
+        axios.get('/api/all_beers')
+            .then(res => this.setState({ tweets: res.data, visible: res.data }))
+    }
 
     displayBeers = () => {
         return (
