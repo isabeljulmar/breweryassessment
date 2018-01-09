@@ -3,11 +3,11 @@ import { Header, Container, Card, Image } from 'semantic-ui-react';
 import axios from 'axios';
 
 class Beers extends React.Component {
-    state = { beers: [], breweries: []  }
+    state = { beers: [], breweries: [] }
 
     componentDidMount() {
-        axios.get('/api/all_beers')
-            .then(res => this.setState({ tweets: res.data, visible: res.data }))
+        axios.get('/api/beer/')
+            .then(res => this.setState({ beers: res.data }))
     }
 
     displayBeers = () => {
@@ -16,7 +16,7 @@ class Beers extends React.Component {
                 <Card>
                   <Image src='/assets/images/avatar/large/daniel.jpg' />
                     <Card.Content>
-                        <Card.Header>Beer</Card.Header>
+                        <Card.Header>{this.state.beers}</Card.Header>
                         <Card.Description>Brewery</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
